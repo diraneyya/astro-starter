@@ -1,5 +1,5 @@
 {
   "[astro]": {
-    "emmet.showAbbreviationSuggestions": true,
-  },
+    "emmet.showAbbreviationSuggestions": true
+  }
 }
