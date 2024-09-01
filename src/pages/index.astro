@@ -1,4 +1,6 @@
 ---
+import astroConfig from "../../astro.config.mjs";
+
 
 ---
 
@@ -9,10 +11,11 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
+    <base href={`${astroConfig.base}/`} />
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
+    <a href="./">Home</a>
+    <a href="./about/">About</a>
 
     <h1>My Astro Site</h1>
   </body>
