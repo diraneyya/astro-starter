@@ -1,0 +1,34 @@
+---
+import astroConfig from "../../astro.config.mjs";
+
+const {frontmatter} = Astro.props;
+import Navigation from "../components/Navigation.astro";
+import '../styles/global.css';
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <base href={`${astroConfig.base}/`} />
+</head>
+
+<body>
+    <Navigation />
+
+    <h1>{frontmatter.title}</h1>
+    <h3>{frontmatter.description ?? "no description"}</h3>
+
+    written by <em>{frontmatter.author ?? "****"}</em>
+
+    { 
+      Object.prototype.hasOwnProperty.call(frontmatter, 'img') && 
+      Object.prototype.hasOwnProperty.call(frontmatter.img, 'url') &&
+      Object.prototype.hasOwnProperty.call(frontmatter.img, 'alt') &&
+      <img src={frontmatter.img.url} alt={frontmatter.img.alt} />
+    }
+
+    <slot />
+</body>
+</html>

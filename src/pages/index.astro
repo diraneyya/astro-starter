@@ -1,7 +1,20 @@
 ---
-import astroConfig from "../../astro.config.mjs";
+import astroConfig from '../../astro.config.mjs';
 
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
 
+type Identity = typeof identity;
+type IdentityKey = keyof Identity;
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"]
+
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
 ---
 
 <html lang="en">
@@ -14,9 +27,15 @@ import astroConfig from "../../astro.config.mjs";
     <base href={`${astroConfig.base}/`} />
   </head>
   <body>
-    <a href="./">Home</a>
-    <a href="./about/">About</a>
+    <Navigation />
 
     <h1>My Astro Site</h1>
+
+    <h2>Identity</h2>
+    { (Object.keys(identity) as IdentityKey[]).filter(
+      (key) => typeof identity[key] === 'string'
+    ).map(
+      (key) => <li><b>{key}</b>: <em>"{identity[key]}"</em>.</li>
+    ) }
   </body>
 </html>
